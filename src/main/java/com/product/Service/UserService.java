@@ -1,72 +1,63 @@
 package com.product.Service;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.DTO.LoginRequest;
 import com.product.Entity.User;
 import com.product.Repository.UserRepo;
+import com.product.Security.JwtUtil;
 
 @Service
 public class UserService {
 
-	@Autowired
-	private UserRepo userRepo;
-	
-	
-	public User createUser(User user) {
-		return userRepo.save(user);
-	}
-	
-	public List<User> getAllUser() {
-		List<User> allUsers=userRepo.findAll();
-		return allUsers;
-	}
-	
-	public User userFindById(Long id) {
-		return userRepo.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
-	}
-	
-	public boolean userFindByMobile(Long mobile){
-		List<User> users=getAllUser();
-		for(int i=0; i<users.size();i++)
-		{
-			if(mobile==users.get(i).getMobile()) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public User saveUser(String name,String surname,long mobile,String mail,String password,String address,long pinCode)
-	{
-		User user=new User();
-		user.setName(name);
-		user.setSurname(surname);
-		user.setAddress(address);
-		user.setMail(mail);
-		user.setMobile(mobile);
-		user.setPassword(password);
-		user.setPinCode(pinCode);
-		
-		return createUser(user);
-	}
-	
-	public User updateUser(long id, String name,String surname,long mobile,String mail,String password,String address,long pinCode) {
-		
-		User user=userFindById(id);
-		user.setName(name);
-		user.setSurname(surname);
-		user.setAddress(address);
-		user.setMail(mail);
-		user.setMobile(mobile);
-		user.setPassword(password);
-		user.setPinCode(pinCode);
-		
-		return userRepo.save(user);
-	}
-	
-	public String deleteUser(long id) {
-		userRepo.deleteById(id);
-		return "User deleted successfully.... with id="+id;
-	}
+    @Autowired
+    private UserRepo repo;
+
+    @Autowired
+    private PasswordEncoder encoder;
+
+    @Autowired
+    private JwtUtil jwtUtil;
+
+    @Autowired
+    private AuthenticationManager authManager;
+
+    // Register
+    public String register(User user) {
+
+        // Default Role
+        if (user.getRole() == null) {
+            user.setRole("USER");
+        }
+
+        user.setPassword(
+                encoder.encode(user.getPassword()));
+
+        repo.save(user);
+
+        return "User Registered Successfully";
+    }
+
+    // Login
+    public String login(LoginRequest request) {
+
+        authManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getMail(),
+                        request.getPassword()));
+
+        // Get user from DB
+        User user = repo.findByMail(request.getMail())
+                .orElseThrow(() ->
+                        new RuntimeException("User Not Found"));
+
+        // Generate JWT with Role
+        return jwtUtil.generateToken(
+                user.getMail(),
+                user.getRole());
+    }
 }

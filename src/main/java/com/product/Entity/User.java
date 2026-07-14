@@ -18,6 +18,7 @@ public class User {
 	private String password;
 	private String address;
 	private long pinCode;
+	private String role;
 	
 	
 	public long getId() {
@@ -67,6 +68,12 @@ public class User {
 	}
 	public void setPinCode(long pinCode) {
 		this.pinCode = pinCode;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 }
