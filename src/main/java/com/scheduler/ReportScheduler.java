@@ -14,7 +14,7 @@ public class ReportScheduler {
     @Autowired
     private UserOrderService userOrderService;
 
-    @Scheduled(cron = "0 * * * * *",zone = "Asia/Kolkata")
+    @Scheduled(cron = "0 */15 * * * *",zone = "Asia/Kolkata")
     public void generateReport() {
     	System.out.println("Scheduler triggered at: " + LocalDateTime.now());
     	userOrderService.generateAndSendReport();

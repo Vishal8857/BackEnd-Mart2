@@ -11,18 +11,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import com.product.Entity.Category;
 import com.product.Entity.Product;
+import com.DTO.ProductDTO;
 import com.product.CommanClasses.UserResponse;
 import com.product.Repository.CategoryRepo;
 import com.product.Service.ProductService;
+import com.product.response.ProductResponse;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -81,5 +86,24 @@ public class ProductController {
 	@GetMapping("/getProduct/{productId}")
 	public Product getProduct(@PathVariable Long productId) {
 		return productService.getProduct(productId);
+	}
+	
+	@DeleteMapping("/deleteProduct/{productID}")
+	public ResponseEntity<UserResponse> deleteProduct(@PathVariable Long productId ){
+		
+		productService.deleteUser(productId);
+		UserResponse response=new UserResponse("Product Deleted successfully.. ");		
+		logger.info("product deleted successfully with id: "+productId);
+		return ResponseEntity.status(HttpStatus.OK).body(response);
+	}
+	
+	@PutMapping(value="/updateProduct/{productId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ResponseEntity<ProductResponse> updateProduct(
+			@PathVariable Long productId,
+			@ModelAttribute ProductDTO productDTO){
+				
+		ProductResponse productResponse=productService.updateProduct(productId, productDTO);
+		
+		return ResponseEntity.status(HttpStatus.OK).body(productResponse);
 	}
 }

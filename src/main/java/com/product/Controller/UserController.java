@@ -1,9 +1,15 @@
 package com.product.Controller;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.DTO.LoginRequest;
 import com.product.Entity.User;
@@ -41,8 +47,16 @@ public class UserController {
 	}
 
 	@GetMapping("/profile")
-	public String profile() {
+	public ResponseEntity<String> profile(Authentication authentication) {
 
-		return "Protected API Accessed";
+	    String username = authentication.getName();
+	    Collection<? extends GrantedAuthority> role=authentication.getAuthorities();
+	    return ResponseEntity.ok(username+" "+ role);
+	}
+	
+	@GetMapping("/profile1")
+	public String profile(@AuthenticationPrincipal UserDetails userDetails) {
+		
+		return userDetails.getUsername();
 	}
 }
