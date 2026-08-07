@@ -3,6 +3,8 @@ package com.product.Controller;
 import java.util.Collection;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,7 @@ import jakarta.validation.Valid;
 @RequestMapping("/user")
 public class UserController {
 
+	private static final Logger logger=LoggerFactory.getLogger(UserController.class);
 	@Autowired
 	private UserService service;
 	
@@ -66,6 +69,7 @@ public class UserController {
 	public ResponseEntity<UserResponse> deleteUser(Long userId){
 		
 		boolean state=service.deleteUser(userId);
+		logger.info("ture");
 		
 		if(state ==true) {
 		UserResponse response=new UserResponse("User deleted successfully....");
