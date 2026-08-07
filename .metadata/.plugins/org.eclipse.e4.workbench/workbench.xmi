@@ -87,7 +87,6 @@
                 <children xsi:type="basic:PartStack" xmi:id="_WGPFxZy2EfCreLwTOGIHkw" elementId="left" containerData="6600" selectedElement="_WGPFxpy2EfCreLwTOGIHkw">
                   <tags>org.eclipse.e4.primaryNavigationStack</tags>
                   <tags>active</tags>
-                  <tags>noFocus</tags>
                   <children xsi:type="advanced:Placeholder" xmi:id="_WGPFxpy2EfCreLwTOGIHkw" elementId="org.eclipse.jdt.ui.PackageExplorer" ref="_WGFUwJy2EfCreLwTOGIHkw" closeable="true">
                     <tags>View</tags>
                     <tags>categoryTag:Java</tags>
@@ -391,7 +390,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_V74P4Jy2EfCreLwTOGIHkw" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_9ru3ANTiEfCIOstbwGXqIw" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.svg" tooltip="Print" command="_VplmEJy2EfCreLwTOGIHkw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_PbCfcIwAEfGH6PFy7LvDvA" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.svg" tooltip="Print" command="_VplmEJy2EfCreLwTOGIHkw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_V74P4Zy2EfCreLwTOGIHkw" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -399,8 +398,8 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_V74P45y2EfCreLwTOGIHkw" elementId="org.eclipse.ui.workbench.edit">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_9rwFINTiEfCIOstbwGXqIw" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.svg" tooltip="Undo" enabled="false" command="_VphUxZy2EfCreLwTOGIHkw"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_9rwFIdTiEfCIOstbwGXqIw" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.svg" tooltip="Redo" enabled="false" command="_Vpii7Jy2EfCreLwTOGIHkw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_PbDtkIwAEfGH6PFy7LvDvA" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.svg" tooltip="Undo" enabled="false" command="_VphUxZy2EfCreLwTOGIHkw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_PbEUoIwAEfGH6PFy7LvDvA" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.svg" tooltip="Redo" enabled="false" command="_Vpii7Jy2EfCreLwTOGIHkw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_V74P5Jy2EfCreLwTOGIHkw" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -421,7 +420,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_V7428Jy2EfCreLwTOGIHkw" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_9rxTQdTiEfCIOstbwGXqIw" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.svg" tooltip="Pin Editor" enabled="false" type="Check" command="_VpkYNJy2EfCreLwTOGIHkw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_PbE7sIwAEfGH6PFy7LvDvA" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.svg" tooltip="Pin Editor" enabled="false" type="Check" command="_VpkYNJy2EfCreLwTOGIHkw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_V7428Zy2EfCreLwTOGIHkw" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -1009,6 +1008,7 @@
       <children xmi:id="_Vpp3kZy2EfCreLwTOGIHkw" elementId="org.eclipse.egit.ui.RepositoriesView" name="In Git Repositories View">
         <children xmi:id="_Vpp3kpy2EfCreLwTOGIHkw" elementId="org.eclipse.egit.ui.RepositoriesView.SingleRepository" name="In Git Repositories View"/>
       </children>
+      <children xmi:id="_PJZ84IwAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.editor" name="Memory Analyzer Editor"/>
     </children>
     <children xmi:id="_Vo9T7Jy2EfCreLwTOGIHkw" elementId="org.eclipse.ui.contexts.dialog" contributorURI="platform:/plugin/org.eclipse.platform" name="In Dialogs" description="A dialog is open"/>
   </rootContext>
@@ -1516,6 +1516,42 @@
     <persistedState key="originalCompatibilityViewBundle" value="org.springframework.tooling.ls.eclipse.gotosymbol"/>
     <tags>View</tags>
     <tags>categoryTag:Other</tags>
+  </descriptors>
+  <descriptors xmi:id="_PZckAIwAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.views.SnapshotHistoryView" label="Heap Dump History" iconURI="platform:/plugin/org.eclipse.mat.ui/icons/heapdump_history.gif" tooltip="" category="Memory Analyzer Views" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.eclipse.mat.ui.internal.views.SnapshotHistoryView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.mat.ui"/>
+    <tags>View</tags>
+    <tags>categoryTag:Memory Analyzer Views</tags>
+  </descriptors>
+  <descriptors xmi:id="_PZdyIIwAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.views.SnapshotDetailsView" label="Heap Dump Details" iconURI="platform:/plugin/org.eclipse.mat.ui/icons/heapdump_details.gif" tooltip="" category="Memory Analyzer Views" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.eclipse.mat.ui.internal.views.SnapshotDetailsView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.mat.ui"/>
+    <tags>View</tags>
+    <tags>categoryTag:Memory Analyzer Views</tags>
+  </descriptors>
+  <descriptors xmi:id="_PZeZMIwAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.views.InspectorView" label="Inspector" iconURI="platform:/plugin/org.eclipse.mat.ui/icons/inspector_view.gif" tooltip="" allowMultiple="true" category="Memory Analyzer Views" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.eclipse.mat.ui.snapshot.views.inspector.InspectorView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.mat.ui"/>
+    <tags>View</tags>
+    <tags>categoryTag:Memory Analyzer Views</tags>
+  </descriptors>
+  <descriptors xmi:id="_PZeZMYwAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.views.TextEditorView" label="Notes" iconURI="platform:/plugin/org.eclipse.mat.ui/icons/notepad.gif" tooltip="" allowMultiple="true" category="Memory Analyzer Views" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.eclipse.mat.ui.internal.views.NotesView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.mat.ui"/>
+    <tags>View</tags>
+    <tags>categoryTag:Memory Analyzer Views</tags>
+  </descriptors>
+  <descriptors xmi:id="_PZfAQIwAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.views.NavigatorView" label="Navigation History" iconURI="platform:/plugin/org.eclipse.mat.ui/icons/navigator_view.gif" tooltip="" category="Memory Analyzer Views" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.eclipse.mat.ui.internal.views.NavigatorView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.mat.ui"/>
+    <tags>View</tags>
+    <tags>categoryTag:Memory Analyzer Views</tags>
+  </descriptors>
+  <descriptors xmi:id="_PZfnUIwAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.views.CompareBasketView" label="Compare Basket" iconURI="platform:/plugin/org.eclipse.mat.ui/icons/compare.gif" tooltip="" category="Memory Analyzer Views" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.eclipse.mat.ui.compare.CompareBasketView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.mat.ui"/>
+    <tags>View</tags>
+    <tags>categoryTag:Memory Analyzer Views</tags>
   </descriptors>
   <trimContributions xmi:id="_2r10UF9tEeO-yojH_y4TJA" elementId="org.eclipse.ui.ide.application.trimcontribution.QuickAccess" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" toBeRendered="false" parentId="org.eclipse.ui.main.toolbar" positionInParent="last">
     <children xsi:type="menu:ToolControl" xmi:id="_76uUAF9tEeO-yojH_y4TJA" elementId="Spacer Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
@@ -2598,6 +2634,25 @@
   <commands xmi:id="_V5lw5Zy2EfCreLwTOGIHkw" elementId="AUTOGEN:::org.eclipse.mylyn.tasks.ui.actions.view/org.eclipse.mylyn.doc.legend.show.action" commandName="Show UI Legend" description="Show Tasks UI Legend" category="_VpdDSJy2EfCreLwTOGIHkw"/>
   <commands xmi:id="_V5mX8Jy2EfCreLwTOGIHkw" elementId="AUTOGEN:::org.eclipse.mylyn.tasks.ui.actions.view/org.eclipse.mylyn.context.ui.actions.tasklist.focus" commandName="Focus on Workweek" description="Focus on Workweek" category="_VpdDSJy2EfCreLwTOGIHkw"/>
   <commands xmi:id="_V5mX8Zy2EfCreLwTOGIHkw" elementId="AUTOGEN:::org.eclipse.pde.ui.logViewActions/org.eclipse.jdt.debug.ui.LogViewActions.showStackTrace" commandName="Show Stack Trace in Console View" description="Show Stack Trace in Console View" category="_VpdDSJy2EfCreLwTOGIHkw"/>
+  <commands xmi:id="_PJVrcIwAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.editor.tabMenu" commandName="Tab Context Menu" description="Change the editor tabs" category="_VpdDLZy2EfCreLwTOGIHkw"/>
+  <commands xmi:id="_PJVrcYwAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.query.browser.QueryHistory" commandName="Query History" description="Show previous queries which could be run again" category="_VpdDLZy2EfCreLwTOGIHkw"/>
+  <commands xmi:id="_PJVrcowAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.acquire.HeapDump" commandName="Acquire Heap Dump" description="Acquire a heap dump from a local process" category="_VpdDMpy2EfCreLwTOGIHkw"/>
+  <commands xmi:id="_PJVrc4wAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.diagnostics.Diagnostics" commandName="Memory Analyzer Diagnostics" description="Acquire diagnostics of this Memory Analyzer tool process" category="_VpdDOJy2EfCreLwTOGIHkw"/>
+  <commands xmi:id="_PJVrdIwAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.actions.executeOQL" commandName="Execute OQL command" description="Execute the current OQL command in the OQL studio." category="_VpdDJJy2EfCreLwTOGIHkw"/>
+  <commands xmi:id="_PJVrdYwAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.actions.assistOQL" commandName="Content Assist (OQL)" description="A command that invokes content assist for the current part of the OQL statement in the OQL studio." category="_VpdDJJy2EfCreLwTOGIHkw"/>
+  <commands xmi:id="_PJVrdowAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.actions.IconAssist" commandName="Icon Assist" description="Show icons and their meanings" category="_VpdDOJy2EfCreLwTOGIHkw"/>
+  <commands xmi:id="_PJVrd4wAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.actions.openHeapDump" commandName="Open Heap Dump" description="Open an Existing Heap Dump" category="_VpdDMpy2EfCreLwTOGIHkw"/>
+  <commands xmi:id="_PJWSgIwAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.actions.openSampleHeapDump" commandName="Open a Sample Heap Dump" description="Open a Sample Heap Dump and optionally run a command" category="_VpdDMpy2EfCreLwTOGIHkw">
+    <parameters xmi:id="_PJWSgYwAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.actions.openSampleHeapDump.heapDump" name="Heap Dump" optional="false"/>
+    <parameters xmi:id="_PJWSgowAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.actions.openSampleHeapDump.command" name="Command line"/>
+    <parameters xmi:id="_PJWSg4wAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.actions.openSampleHeapDump.oqlParms" name="OQL command"/>
+  </commands>
+  <commands xmi:id="_PJWShIwAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.query.browser.QueryBrowser" commandName="Query Browser" description="Browse a list of queries to run on the snapshot" category="_VpdDJJy2EfCreLwTOGIHkw">
+    <parameters xmi:id="_PJWShYwAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.query.browser.QueryBrowser.commandName" name="Command line"/>
+  </commands>
+  <commands xmi:id="_PJWShowAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.actions.executeInspection" commandName="Execute Inspection" description="Execute Inspection on Existing Snapshot" category="_VpdDJJy2EfCreLwTOGIHkw">
+    <parameters xmi:id="_PJWSh4wAEfGH6PFy7LvDvA" elementId="org.eclipse.mat.ui.actions.executeInspection.commandName" name="Command line" optional="false"/>
+  </commands>
   <addons xmi:id="_Vo9T7Zy2EfCreLwTOGIHkw" elementId="org.eclipse.e4.core.commands.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_Vo9T7py2EfCreLwTOGIHkw" elementId="org.eclipse.e4.ui.contexts.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_Vo9T75y2EfCreLwTOGIHkw" elementId="org.eclipse.e4.ui.bindings.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
@@ -2609,7 +2664,7 @@
   <addons xmi:id="_Vo9T9Zy2EfCreLwTOGIHkw" elementId="MinMax Addon" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.MinMaxAddon"/>
   <addons xmi:id="_Vo9T9py2EfCreLwTOGIHkw" elementId="org.eclipse.ui.workbench.addon.0" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
   <addons xmi:id="_VpI6EJy2EfCreLwTOGIHkw" elementId="SplitterAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon"/>
-  <addons xmi:id="_9ZHdANTiEfCIOstbwGXqIw" elementId="org.eclipse.ui.ide.addon.0" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
+  <addons xmi:id="_IYS0IKimEeS11vbz3f9ezw" elementId="org.eclipse.ui.ide.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
   <addons xmi:id="_dz0JgGOlEeSMMaPQU2nlzw" elementId="org.eclipse.ui.ide.application.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.ui.ide.application/org.eclipse.ui.internal.ide.application.addons.ModelCleanupAddon"/>
   <categories xmi:id="_VpdDIJy2EfCreLwTOGIHkw" elementId="org.eclipse.team.ui.category.team" name="Version control (Team)" description="Actions that apply when working with a version control system"/>
   <categories xmi:id="_VpdDIZy2EfCreLwTOGIHkw" elementId="org.eclipse.ui.category.views" name="Views" description="Commands for opening views"/>

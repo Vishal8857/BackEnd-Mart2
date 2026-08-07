@@ -60,4 +60,12 @@ public class UserService {
                 user.getMail(),
                 user.getRole());
     }
+    
+    public boolean deleteUser(Long userId) {
+		if(repo.existsById(userId)) {
+    	repo.deleteById(userId);
+    	return true;
+		}
+    	return false;
+    }
 }

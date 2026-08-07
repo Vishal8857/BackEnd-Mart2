@@ -1,5 +1,6 @@
-2026-07-30T15:25:28.400+05:30  WARN 23124 --- [Mart2] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=17h36m41s289ms598µs700ns).
-2026-07-30T15:37:06.770+05:30 DEBUG 23124 --- [Mart2] [scheduling-1] org.hibernate.SQL                        : 
+2026-08-05T13:27:22.689+05:30  WARN 30984 --- [Mart2] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h1m24s745ms817µs800ns).
+2026-08-05T13:27:53.883+05:30  WARN 30984 --- [Mart2] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5d17h49m25s234ms923µs700ns).
+2026-08-05T13:34:51.505+05:30 DEBUG 30984 --- [Mart2] [scheduling-1] org.hibernate.SQL                        : 
     select
         uo1_0.id,
         uo1_0.product_id,
@@ -9,16 +10,98 @@
         userorder uo1_0 
     where
         uo1_0.timestamp between ? and ?
-2026-07-30T15:37:06.790+05:30 TRACE 23124 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:TIMESTAMP) <- [2026-07-27T00:00]
-2026-07-30T15:37:06.792+05:30 TRACE 23124 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP) <- [2026-08-02T23:59:59.999999999]
-2026-07-30T15:37:06.949+05:30  INFO 23124 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Total orders: 0
-2026-07-30T15:37:06.994+05:30  INFO 23124 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Before sendMail()
-2026-07-30T15:37:07.010+05:30  INFO 23124 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Excel exists: true
-2026-07-30T15:37:07.011+05:30  INFO 23124 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Path: D:\Spring Eclipse\Spring Project\Mart2\daily-orders.xlsx
-2026-07-30T15:37:12.089+05:30  INFO 23124 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : After sendMail()
-2026-07-30T15:41:41.284+05:30  INFO 23124 --- [Mart2] [RMI TCP Connection(1001)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2026-07-30T15:41:41.574+05:30  INFO 23124 --- [Mart2] [RMI TCP Connection(1001)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-07-30T15:41:41.671+05:30  INFO 23124 --- [Mart2] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-07-30T15:41:42.056+05:30  INFO 23124 --- [Mart2] [RMI TCP Connection(1001)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-07-30T15:41:42.128+05:30  INFO 23124 --- [Mart2] [RMI TCP Connection(1001)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-07-30T15:41:42.149+05:30  INFO 23124 --- [Mart2] [RMI TCP Connection(1001)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-08-05T13:34:51.573+05:30 TRACE 30984 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:TIMESTAMP) <- [2026-08-03T00:00]
+2026-08-05T13:34:51.582+05:30 TRACE 30984 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP) <- [2026-08-09T23:59:59.999999999]
+2026-08-05T13:34:51.861+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Total orders: 0
+2026-08-05T13:34:51.969+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Before sendMail()
+2026-08-05T13:34:52.013+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Excel exists: true
+2026-08-05T13:34:52.014+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Path: D:\Spring Eclipse\Spring Project\Mart2\daily-orders.xlsx
+2026-08-05T13:34:57.596+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : After sendMail()
+2026-08-05T13:53:43.177+05:30  WARN 30984 --- [Mart2] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m45s404ms207µs900ns).
+2026-08-05T13:56:24.083+05:30 DEBUG 30984 --- [Mart2] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        uo1_0.id,
+        uo1_0.product_id,
+        uo1_0.timestamp,
+        uo1_0.userid 
+    from
+        userorder uo1_0 
+    where
+        uo1_0.timestamp between ? and ?
+2026-08-05T13:56:24.105+05:30 TRACE 30984 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:TIMESTAMP) <- [2026-08-03T00:00]
+2026-08-05T13:56:24.112+05:30 TRACE 30984 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP) <- [2026-08-09T23:59:59.999999999]
+2026-08-05T13:56:24.289+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Total orders: 0
+2026-08-05T13:56:24.419+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Before sendMail()
+2026-08-05T13:56:24.455+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Excel exists: true
+2026-08-05T13:56:24.456+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Path: D:\Spring Eclipse\Spring Project\Mart2\daily-orders.xlsx
+2026-08-05T13:56:29.459+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : After sendMail()
+2026-08-05T14:00:00.051+05:30 DEBUG 30984 --- [Mart2] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        uo1_0.id,
+        uo1_0.product_id,
+        uo1_0.timestamp,
+        uo1_0.userid 
+    from
+        userorder uo1_0 
+    where
+        uo1_0.timestamp between ? and ?
+2026-08-05T14:00:00.055+05:30 TRACE 30984 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:TIMESTAMP) <- [2026-08-03T00:00]
+2026-08-05T14:00:00.056+05:30 TRACE 30984 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP) <- [2026-08-09T23:59:59.999999999]
+2026-08-05T14:00:00.076+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Total orders: 0
+2026-08-05T14:00:00.119+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Before sendMail()
+2026-08-05T14:00:00.125+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Excel exists: true
+2026-08-05T14:00:00.125+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Path: D:\Spring Eclipse\Spring Project\Mart2\daily-orders.xlsx
+2026-08-05T14:00:04.723+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : After sendMail()
+2026-08-05T14:15:00.199+05:30 DEBUG 30984 --- [Mart2] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        uo1_0.id,
+        uo1_0.product_id,
+        uo1_0.timestamp,
+        uo1_0.userid 
+    from
+        userorder uo1_0 
+    where
+        uo1_0.timestamp between ? and ?
+2026-08-05T14:15:00.228+05:30 TRACE 30984 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:TIMESTAMP) <- [2026-08-03T00:00]
+2026-08-05T14:15:00.231+05:30 TRACE 30984 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP) <- [2026-08-09T23:59:59.999999999]
+2026-08-05T14:15:00.284+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Total orders: 0
+2026-08-05T14:15:00.338+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Before sendMail()
+2026-08-05T14:15:00.353+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Excel exists: true
+2026-08-05T14:15:00.354+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Path: D:\Spring Eclipse\Spring Project\Mart2\daily-orders.xlsx
+2026-08-05T14:15:05.859+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : After sendMail()
+2026-08-05T15:03:59.885+05:30  WARN 30984 --- [Mart2] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=40m16s184ms390µs400ns).
+2026-08-05T15:09:50.566+05:30 DEBUG 30984 --- [Mart2] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        uo1_0.id,
+        uo1_0.product_id,
+        uo1_0.timestamp,
+        uo1_0.userid 
+    from
+        userorder uo1_0 
+    where
+        uo1_0.timestamp between ? and ?
+2026-08-05T15:09:50.589+05:30 TRACE 30984 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:TIMESTAMP) <- [2026-08-03T00:00]
+2026-08-05T15:09:50.594+05:30 TRACE 30984 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP) <- [2026-08-09T23:59:59.999999999]
+2026-08-05T15:09:50.826+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Total orders: 0
+2026-08-05T15:09:50.906+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Before sendMail()
+2026-08-05T15:09:50.930+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Excel exists: true
+2026-08-05T15:09:50.931+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Path: D:\Spring Eclipse\Spring Project\Mart2\daily-orders.xlsx
+2026-08-05T15:09:56.063+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : After sendMail()
+2026-08-05T15:15:00.050+05:30 DEBUG 30984 --- [Mart2] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        uo1_0.id,
+        uo1_0.product_id,
+        uo1_0.timestamp,
+        uo1_0.userid 
+    from
+        userorder uo1_0 
+    where
+        uo1_0.timestamp between ? and ?
+2026-08-05T15:15:00.060+05:30 TRACE 30984 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:TIMESTAMP) <- [2026-08-03T00:00]
+2026-08-05T15:15:00.062+05:30 TRACE 30984 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP) <- [2026-08-09T23:59:59.999999999]
+2026-08-05T15:15:00.102+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Total orders: 0
+2026-08-05T15:15:00.157+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Before sendMail()
+2026-08-05T15:15:00.167+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Excel exists: true
+2026-08-05T15:15:00.168+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Path: D:\Spring Eclipse\Spring Project\Mart2\daily-orders.xlsx
+2026-08-05T15:15:05.465+05:30  INFO 30984 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : After sendMail()
+2026-08-05T15:24:43.369+05:30  WARN 30984 --- [Mart2] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m42s899ms140µs100ns).

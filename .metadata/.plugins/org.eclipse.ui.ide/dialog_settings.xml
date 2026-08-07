@@ -19,6 +19,8 @@
 		<item value="org.eclipse.m2e.feature:2.9.0.20250514-0352"/>
 		<item value="org.eclipse.m2e.logback.feature:2.7.100.20250418-1315"/>
 		<item value="org.eclipse.m2e.wtp.feature:1.6.1.20231024-1618"/>
+		<item value="org.eclipse.mat.chart.feature:1.17.0.202606011933"/>
+		<item value="org.eclipse.mat.feature:1.17.0.202606011933"/>
 		<item value="org.eclipse.mylyn.wikitext.feature:4.7.0.v20250513-1805"/>
 		<item value="org.eclipse.pde:3.16.300.v20250528-1830"/>
 		<item value="org.eclipse.platform:4.36.0.v20250528-2229"/>

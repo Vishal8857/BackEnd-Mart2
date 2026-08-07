@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.Authentication;
@@ -12,6 +13,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.DTO.LoginRequest;
+import com.product.CommanClasses.UserResponse;
 import com.product.Entity.User;
 import com.product.Repository.UserRepo;
 import com.product.Service.UserService;
@@ -58,5 +60,18 @@ public class UserController {
 	public String profile(@AuthenticationPrincipal UserDetails userDetails) {
 		
 		return userDetails.getUsername();
+	}
+	
+	@DeleteMapping("/deteleUser/{userId}")
+	public ResponseEntity<UserResponse> deleteUser(Long userId){
+		
+		boolean state=service.deleteUser(userId);
+		
+		if(state ==true) {
+		UserResponse response=new UserResponse("User deleted successfully....");
+		return ResponseEntity.status(HttpStatus.OK).body(response);
+		}
+		UserResponse response=new UserResponse("User not exist....");
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 	}
 }
