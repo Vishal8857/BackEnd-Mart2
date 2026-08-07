@@ -479,3 +479,19 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 2026-08-07T17:42:22.906+05:30  INFO 22916 --- [Mart2] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 80 (http) with context path '/'
 2026-08-07T17:42:22.920+05:30  INFO 22916 --- [Mart2] [restartedMain] com.example.Mart2.Mart2Application       : Started Mart2Application in 2.036 seconds (process running for 544.455)
 2026-08-07T17:42:22.923+05:30  INFO 22916 --- [Mart2] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-08-07T17:45:00.332+05:30 DEBUG 22916 --- [Mart2] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        uo1_0.id,
+        uo1_0.product_id,
+        uo1_0.timestamp,
+        uo1_0.userid 
+    from
+        userorder uo1_0 
+    where
+        uo1_0.timestamp between ? and ?
+2026-08-07T17:45:00.335+05:30 TRACE 22916 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:TIMESTAMP) <- [2026-08-03T00:00]
+2026-08-07T17:45:00.336+05:30 TRACE 22916 --- [Mart2] [scheduling-1] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP) <- [2026-08-09T23:59:59.999999999]
+2026-08-07T17:45:01.070+05:30  INFO 22916 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Total orders: 0
+2026-08-07T17:45:01.269+05:30  INFO 22916 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Before sendMail()
+2026-08-07T17:45:01.325+05:30  INFO 22916 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Excel exists: true
+2026-08-07T17:45:01.325+05:30  INFO 22916 --- [Mart2] [scheduling-1] com.product.Service.UserOrderService     : Path: D:\Spring Eclipse\Spring Project\Mart2\daily-orders.xlsx
