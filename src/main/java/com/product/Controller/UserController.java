@@ -69,7 +69,7 @@ public class UserController {
 	public ResponseEntity<UserResponse> deleteUser(Long userId){
 		
 		boolean flag=service.deleteUser(userId);
-		logger.info("true");
+		logger.info("ture");
 		
 		if(flag) {
 		UserResponse response=new UserResponse("User deleted successfully....");
