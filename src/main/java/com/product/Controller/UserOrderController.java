@@ -31,8 +31,9 @@ public class UserOrderController {
 			@RequestParam("userId") long userId,
 			@RequestParam("productId") long productId
 			)throws IOException{
+		
 		UserOrder userOrder= userOrderService.addUserOrder(userId, productId);
-		UserResponse response=new UserResponse("Order added successfully...."+ userOrder.getProductId());
+		UserResponse response=new UserResponse("Order added successfully...."+ userOrder.getProductId()+" "+userOrder.getTimestamp());
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 
