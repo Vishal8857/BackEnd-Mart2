@@ -61,8 +61,8 @@ public class UserController {
 	
 	@GetMapping("/profile1")
 	public String profile(@AuthenticationPrincipal UserDetails userDetails) {
-		
-		return userDetails.getUsername();
+		String userName=userDetails.getUsername();
+		return userName;
 	}
 	
 	@DeleteMapping("/deteleUser/{userId}")
