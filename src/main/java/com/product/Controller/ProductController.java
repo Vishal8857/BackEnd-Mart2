@@ -92,7 +92,7 @@ public class ProductController {
 	public ResponseEntity<UserResponse> deleteProduct(@PathVariable Long productId ){
 		
 		productService.deleteUser(productId);
-		UserResponse response=new UserResponse("Product Deleted successfully.. ");		
+		UserResponse response=new UserResponse("Product Deleted successfully.. with id:"+ productId);	
 		logger.info("product deleted successfully with id: "+productId);
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
