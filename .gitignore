@@ -1,3 +1,6 @@
+# =========================
+# Maven
+# =========================
 target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -7,42 +10,41 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
-# https://maven.apache.org/tools/wrapper/#Usage_with_or_without_Binary_JAR
-.mvn/wrapper/maven-wrapper.jar
-
-# Eclipse m2e generated files
-# Eclipse Core
-.project
-# JDT-specific (Eclipse Java Development Tools)
-.classpath
 
 
-#Own written
-#Maven
-target/
-
-#Eclipse
+# =========================
+# Eclipse
+# =========================
 .metadata/
 .settings/
 .classpath
 .project
 .factorypath
 
-#Maven
-target/
 
-#Logs
+# =========================
+# Logs
+# =========================
 logs/
 *.log
 *.gz
 
+
+# =========================
 # OS
-.DB_Store
+# =========================
+.DS_Store
 Thumbs.db
 
-#VS code (if you use it)
+
+# =========================
+# VS Code
+# =========================
 .vscode/
 
-#Intellij( if you use it)
+
+# =========================
+# IntelliJ
+# =========================
 .idea/
 *.iml
