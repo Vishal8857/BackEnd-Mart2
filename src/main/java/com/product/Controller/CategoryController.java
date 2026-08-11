@@ -31,6 +31,7 @@ public class CategoryController {
     public ResponseEntity<UserResponse> createCategory(@RequestBody Category category) {
 
         if (category.getName() == null || category.getName().trim().isEmpty()) {
+        	logger.info("category name is empty or null");
             throw new RuntimeException("Category name is required.");
         }
 
