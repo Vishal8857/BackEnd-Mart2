@@ -32,7 +32,7 @@ public class JwtFilter extends OncePerRequestFilter {
 		String path = request.getServletPath();
 
 		// Skip Login/Register APIs
-		if (path.equals("/user/login") || path.equals("/user/register")) {
+		if (path.equals("/user/login") || path.equals("/user/register") || path.equals("api/category/allCategory")) {
 
 			filterChain.doFilter(request, response);
 			return;

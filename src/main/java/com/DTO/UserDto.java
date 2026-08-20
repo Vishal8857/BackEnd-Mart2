@@ -1,15 +1,7 @@
-package com.product.Entity;
+package com.DTO;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+public class UserDto {
 
-@Entity
-public class User {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String name;
 	private String surname;
@@ -19,7 +11,6 @@ public class User {
 	private String address;
 	private String pinCode;
 	private String role;
-	
 	
 	public long getId() {
 		return id;
@@ -75,5 +66,10 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	public UserDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	
 }

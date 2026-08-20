@@ -1,5 +1,6 @@
 package com.product.Service;
 
+
 import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
@@ -8,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import com.DTO.ProductDTO;
 import com.custom.exception.ProductNotFoundException;
 import com.product.Entity.Category;
@@ -17,7 +20,6 @@ import com.product.Entity.Product;
 import com.product.Repository.CategoryRepo;
 import com.product.Repository.ProductRepo;
 import com.product.response.ProductResponse;
-
 import io.jsonwebtoken.io.IOException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -37,18 +39,38 @@ public class ProductService {
 	@Autowired
 	private CategoryRepo categoryRepo;
 
+	
 	public Product createProduct(Product product) {
 
 		return productRepo.save(product);
 	}
 
 	public List<Product> allProduct() {
-		logger.info("Fetching from DB");
 		List<Product> productList = productRepo.findAll();
 
 		return productList;
 	}
 
+	public Page<ProductResponse> getProductList(int page, int size){
+		
+		Pageable pageable=PageRequest.of(page, size);
+		Page<Product> productList=productRepo.findAll(pageable);
+		
+		return productList.map(product -> {
+			ProductResponse response = new ProductResponse();
+
+			response.setId(product.getId());
+			response.setName(product.getName());
+			response.setDescription(product.getDescription());
+			response.setPrice(product.getPrice());
+			response.setCategoryId(product.getCategory().getCategoryId());
+			response.setCategoryName(product.getCategory().getName());
+			response.setMessage("Product details");
+			
+			return response;
+		});
+	}
+	
 	@Cacheable(value = "product", key = "#id")
 	public Product getProduct(Long id) {
 		logger.info("finding Product from DB");

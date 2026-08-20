@@ -1,24 +1,16 @@
-package com.product.Entity;
+package com.product.response;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+public class UserResponseDto {
 
-@Entity
-public class User {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String name;
 	private String surname;
 	private String mobile;
 	private String mail;
-	private String password;
 	private String address;
 	private String pinCode;
 	private String role;
+	private String massage;
 	
 	
 	public long getId() {
@@ -51,17 +43,17 @@ public class User {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	public String getAddress() {
 		return address;
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getMassage() {
+		return massage;
+	}
+	public void setMassage(String massage) {
+		this.massage = massage;
 	}
 	public String getPinCode() {
 		return pinCode;
@@ -74,6 +66,23 @@ public class User {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	public UserResponseDto(long id, String name, String surname, String mobile, String mail, String address, String pinCode,
+			String role, String massage) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.surname = surname;
+		this.mobile = mobile;
+		this.mail = mail;
+		this.address = address;
+		this.pinCode = pinCode;
+		this.role = role;
+		this.massage=massage;
+	}
+	
+	public UserResponseDto() {
+		// TODO Auto-generated constructor stub
 	}
 	
 }
