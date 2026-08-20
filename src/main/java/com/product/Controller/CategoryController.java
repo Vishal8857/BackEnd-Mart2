@@ -28,6 +28,7 @@ public class CategoryController {
     private CategoryService service;
 
     @PostMapping("/create")
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<UserResponse> createCategory(@RequestBody Category category) {
 
         if (category.getName() == null || category.getName().trim().isEmpty()) {
@@ -42,7 +43,6 @@ public class CategoryController {
     }
 
     @GetMapping("/allCategory")
-    @PreAuthorize("hasRole('Admin')")
     public List<Category> allCategory() {
         return service.allCategory();
     }

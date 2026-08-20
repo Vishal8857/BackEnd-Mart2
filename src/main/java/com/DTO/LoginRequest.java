@@ -11,7 +11,7 @@ public class LoginRequest {
 	private String mail;
 	
 	@NotBlank(message="Password can not be Blank")
-	@Size(min = 3, message = "Password must be at least 8 characters")
+	@Size(min = 3, message = "Password must be at least 3 characters")
 	private String password;
 	
 	@NotBlank(message="Role can not be Blank")

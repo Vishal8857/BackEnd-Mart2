@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -67,6 +68,15 @@ public class ProductController {
 	@GetMapping("/allProduct")
 	public List<Product> allProduct() {
 		return productService.allProduct();
+	}
+	
+	@GetMapping("/allProductPage")
+	public ResponseEntity<Page<ProductResponse>> getAllProduct(
+			@RequestParam(value="page", defaultValue = "0") int page,
+			@RequestParam(value="size", defaultValue = "10") int size
+			){
+		Page<ProductResponse> pageProduct=productService.getProductList(page, size);
+		return ResponseEntity.status(HttpStatus.OK).body(pageProduct);
 	}
 
 	@GetMapping("/image")

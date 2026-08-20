@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +15,12 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.DTO.LoginRequest;
+import com.DTO.UserDto;
 import com.product.CommanClasses.UserResponse;
 import com.product.Entity.User;
 import com.product.Repository.UserRepo;
 import com.product.Service.UserService;
+import com.product.response.UserResponseDto;
 
 import jakarta.validation.Valid;
 
@@ -65,6 +68,16 @@ public class UserController {
 		return userName;
 	}
 	
+	@GetMapping("/getUsers")
+	public ResponseEntity<Page<UserResponseDto>> allUsers(
+	@RequestParam( defaultValue ="0") int page,
+	@RequestParam( defaultValue = "10") int size )
+	{
+		Page<UserResponseDto> userResponse=service.allUsers(page, size);
+		
+		return ResponseEntity.status(HttpStatus.OK).body(userResponse);
+	}
+	
 	@DeleteMapping("/deteleUser/{userId}")
 	public ResponseEntity<UserResponse> deleteUser(Long userId){
 		
@@ -78,5 +91,13 @@ public class UserController {
 		}
 		UserResponse response=new UserResponse("User not exist....");
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+	}
+	
+	@PutMapping("/updateUser/{userId}")
+	public ResponseEntity<UserResponseDto> updateUser(@PathVariable long userId, @RequestBody UserDto userDto){
+		UserResponseDto users=service.updateUser(userId, userDto);
+		
+		return ResponseEntity.status(HttpStatus.OK).body(users);
+		
 	}
 }
