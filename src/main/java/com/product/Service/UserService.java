@@ -62,6 +62,7 @@ public class UserService {
 
         // Generate JWT with Role
         return jwtUtil.generateToken(
+                user.getId(),
                 user.getMail(),
                 user.getRole());
     }

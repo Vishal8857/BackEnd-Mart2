@@ -1,16 +1,17 @@
 package com.DTO;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class TodaysOrderProductResponse {
 
 	private String productName;
-	private double price;
+	private BigDecimal price;
 	private LocalDateTime timestamp;
 	private String userMail;
 
 	
-	public TodaysOrderProductResponse(String productName, double price, LocalDateTime timestamp, String userMail) {
+	public TodaysOrderProductResponse(String productName, BigDecimal price, LocalDateTime timestamp, String userMail) {
 		super();
 		this.productName = productName;
 		this.price = price;
@@ -34,11 +35,11 @@ public class TodaysOrderProductResponse {
 		this.productName = productName;
 	}
 
-	public double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

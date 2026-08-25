@@ -63,10 +63,10 @@ public class SecurityConfig {
                 .requestMatchers(
                     "/user/allUsers"
                     
-                ).hasRole("Admin")
+                ).hasRole("ADMIN")
 
                 // Everything else requires User or Admin
-                .anyRequest().hasAnyRole("Admin", "User")
+                .anyRequest().hasAnyRole("ADMIN", "USER")
             )
 
             // JWT filter

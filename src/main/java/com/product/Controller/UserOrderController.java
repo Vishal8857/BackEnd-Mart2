@@ -1,50 +1,80 @@
 package com.product.Controller;
 
-import java.io.IOException;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.DTO.OrderRequest;
 import com.DTO.TodaysOrderProductResponse;
-import com.product.CommanClasses.UserResponse;
-import com.product.Entity.Product;
-import com.product.Entity.UserOrder;
-import com.product.Service.ProductService;
-import com.product.Service.UserOrderService;
+import com.product.Entity.OrderEntity;
+import com.product.Service.OrderService;
+import com.product.response.OrderResponse;
 
 @RestController
-@RequestMapping("api/userOrder")
+@RequestMapping("/userOrder")
 public class UserOrderController {
 
-	@Autowired
-	UserOrderService userOrderService;
-	@Autowired
-	ProductService productService;
-	
-	@GetMapping("/addOrder")
-	public ResponseEntity<UserResponse> addOrder(
-			@RequestParam("userId") long userId,
-			@RequestParam("productId") long productId
-			)throws IOException{
-		
-		UserOrder userOrder= userOrderService.addUserOrder(userId, productId);
-		UserResponse response=new UserResponse("Order added successfully...."+ userOrder.getProductId()+" "+userOrder.getTimestamp());
-		return ResponseEntity.status(HttpStatus.CREATED).body(response);
-	}
+    private final OrderService userOrderService;
 
-	@GetMapping("/orderList")
-	public List<Product> orderList(long userId){
-		return userOrderService.allOrder(userId);
-	}
-	
-	@GetMapping("/todaysOrderList")
-	public List<TodaysOrderProductResponse> todaysOrder(){
-		return userOrderService.getTodaysOrder();
-	}
-	
+    public UserOrderController(OrderService userOrderService) {
+        this.userOrderService = userOrderService;
+    }
+
+    // =====================================================
+    // CREATE ORDER
+    // =====================================================
+
+    @PostMapping("/orders")
+    public ResponseEntity<OrderResponse> createOrder(
+            Authentication authentication,
+            @RequestBody OrderRequest request) {
+
+        Long userId = (Long) authentication.getPrincipal();
+
+        OrderResponse response =
+                userOrderService.createOrder(userId, request);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(response);
+    }
+
+
+    // =====================================================
+    // GET USER ORDERS
+    // =====================================================
+
+    @GetMapping("/orders")
+    public ResponseEntity<List<OrderEntity>> getMyOrders(
+            Authentication authentication) {
+
+        // User ID comes from JWT
+        Long userId = (Long) authentication.getPrincipal();
+
+        List<OrderEntity> orders =
+                userOrderService.getUserOrders(userId);
+
+        return ResponseEntity.ok(orders);
+    }
+
+
+    // =====================================================
+    // TODAY'S ORDERS - ADMIN
+    // =====================================================
+
+    @GetMapping("/todaysOrderList")
+    public ResponseEntity<List<TodaysOrderProductResponse>> todaysOrder() {
+
+        List<TodaysOrderProductResponse> orders =
+                userOrderService.getTodaysOrder();
+
+        return ResponseEntity.ok(orders);
+    }
 }

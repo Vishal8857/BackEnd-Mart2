@@ -10,6 +10,8 @@ public class ProductResponse {
     private Long categoryId;
     private String categoryName;
     private String message;
+    
+    private byte[] image;
 
     public ProductResponse() {
     }
@@ -30,7 +32,15 @@ public class ProductResponse {
         this.name = name;
     }
 
-    public String getDescription() {
+    public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	public String getDescription() {
         return description;
     }
 

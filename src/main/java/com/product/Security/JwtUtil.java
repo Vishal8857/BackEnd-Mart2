@@ -1,55 +1,87 @@
 package com.product.Security;
 
+import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.springframework.stereotype.Component;
-import io.jsonwebtoken.*;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtUtil {
 
-	private static final String SECRET = "mysecretkeymysecretkeymysecretkey123456";
+    private static final String SECRET =
+            "mysecretkeymysecretkeymysecretkey123456";
 
-	private static final long EXPIRATION = 1000 * 60 * 60;
+    private static final long EXPIRATION =
+            1000 * 60 * 60; // 1 hour
 
-	private Key getKey() {
+    private Key getKey() {
+        return Keys.hmacShaKeyFor(
+                SECRET.getBytes(StandardCharsets.UTF_8)
+        );
+    }
 
-		return Keys.hmacShaKeyFor(SECRET.getBytes());
-	}
+    // Generate JWT with User ID, Username and Role
+    public String generateToken(Long userId, String username, String role) {
 
-	// Generate Token WITH ROLE
-	public String generateToken(String username, String role) {
+        Map<String, Object> claims = new HashMap<>();
 
-		Map<String, Object> claims = new HashMap<>();
+        claims.put("userId", userId);
+        claims.put("role", role);
 
-		claims.put("role", role);
+        return Jwts.builder()
+                .setClaims(claims)
+                .setSubject(username)
+                .setIssuedAt(new Date())
+                .setExpiration(
+                        new Date(System.currentTimeMillis() + EXPIRATION)
+                )
+                .signWith(getKey(), SignatureAlgorithm.HS256)
+                .compact();
+    }
 
-		return Jwts.builder().setClaims(claims).setSubject(username).setIssuedAt(new Date())
-				.setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
-				.signWith(getKey(), SignatureAlgorithm.HS256).compact();
-	}
+    // Get all claims
+    private Claims getClaims(String token) {
 
-	// Extract Username
-	public String extractUsername(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(getKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+    }
 
-		return Jwts.parserBuilder().setSigningKey(getKey()).build().parseClaimsJws(token).getBody().getSubject();
-	}
+    // Extract Username
+    public String extractUsername(String token) {
 
-	// Extract Role
-	public String extractRole(String token) {
+        return getClaims(token).getSubject();
+    }
 
-		return Jwts.parserBuilder().setSigningKey(getKey()).build().parseClaimsJws(token).getBody().get("role",
-				String.class);
-	}
+    // Extract User ID
+    public Long extractUserId(String token) {
 
-	// Validate Token
-	public boolean validateToken(String token, String username) {
+        Number userId = getClaims(token).get("userId", Number.class);
 
-		String extractedUsername = extractUsername(token);
+        return userId != null ? userId.longValue() : null;
+    }
 
-		return extractedUsername.equals(username);
-	}
+    // Extract Role
+    public String extractRole(String token) {
+
+        return getClaims(token).get("role", String.class);
+    }
+
+    // Validate Token
+    public boolean validateToken(String token, String username) {
+
+        String extractedUsername = extractUsername(token);
+
+        return extractedUsername.equals(username);
+    }
 }
