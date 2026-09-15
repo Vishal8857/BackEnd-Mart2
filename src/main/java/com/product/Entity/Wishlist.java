@@ -3,7 +3,15 @@ package com.product.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "wishlist")
+@Table(
+	    name = "wishlist",
+	    uniqueConstraints = {
+	        @UniqueConstraint(
+	            name = "uk_wishlist_user_product",
+	            columnNames = {"user_id", "product_id"}
+	        )
+	    }
+	)
 public class Wishlist {
 
     @Id

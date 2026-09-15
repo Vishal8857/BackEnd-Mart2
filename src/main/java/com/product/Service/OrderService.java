@@ -23,7 +23,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.DTO.OrderItemRequest;
 import com.DTO.OrderRequest;
-import com.DTO.TodaysOrderProductResponse;
 import com.product.Entity.OrderEntity;
 import com.product.Entity.OrderItem;
 import com.product.Entity.Product;
@@ -33,6 +32,7 @@ import com.product.Repository.ProductRepo;
 import com.product.Repository.UserRepo;
 import com.product.response.OrderItemResponse;
 import com.product.response.OrderResponse;
+import com.product.response.TodaysOrderProductResponse;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -144,12 +144,36 @@ public class OrderService {
 	// GET ORDERS OF SPECIFIC USER
 	// =========================================================
 
-	public List<OrderEntity> getUserOrders(Long userId) {
+	public List<OrderResponse> getUserOrders(Long userId) {
 
 		// Check user exists
 		userRepo.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-
-		return orderRepo.findByUserId(userId);
+		
+		List<OrderEntity> order=orderRepo.findOrdersByUserId(userId);
+		
+		return order.stream().map(orders->{
+			
+			OrderResponse response=new OrderResponse();
+			response.setOrderId(orders.getId());
+			response.setTotalAmount(orders.getTotalAmount());
+			response.setOrderDate(orders.getOrderDate());
+			
+			List<OrderItemResponse> itemResponses=
+					orders.getOrderItems().stream().map(items->{
+						
+						OrderItemResponse itemResponse=new OrderItemResponse();
+						
+						itemResponse.setProductName(items.getProduct().getName());
+						itemResponse.setProductId(items.getProduct().getId());
+						itemResponse.setQuantity(items.getQuantity());
+						itemResponse.setPrice(items.getPrice());
+					
+						return itemResponse;
+						}).toList();
+			response.setItems(itemResponses);
+			
+			return response;
+		}).toList();
 	}
 
 	// =========================================================
@@ -159,32 +183,24 @@ public class OrderService {
 	@Transactional(readOnly = true)
 	public List<TodaysOrderProductResponse> getTodaysOrder() {
 
-		LocalDate today = LocalDate.now();
+	    LocalDate today = LocalDate.now();
 
-		LocalDate weekStart = today.with(DayOfWeek.MONDAY);
-		LocalDate weekEnd = today.with(DayOfWeek.SUNDAY);
+	    LocalDate weekStart =
+	            today.with(DayOfWeek.MONDAY);
 
-		LocalDateTime startOfWeek = weekStart.atStartOfDay();
-		LocalDateTime endOfWeek = weekEnd.atTime(LocalTime.MAX);
+	    LocalDate weekEnd =
+	            today.with(DayOfWeek.SUNDAY);
 
-		List<OrderEntity> orders = orderRepo.findByOrderDateBetween(startOfWeek, endOfWeek);
+	    LocalDateTime startOfWeek =
+	            weekStart.atStartOfDay();
 
-		List<TodaysOrderProductResponse> response = new ArrayList<>();
+	    LocalDateTime endOfWeek =
+	            weekEnd.atTime(LocalTime.MAX);
 
-		for (OrderEntity order : orders) {
-
-			User user = order.getUser();
-
-			for (OrderItem item : order.getOrderItems()) {
-
-				Product product = item.getProduct();
-
-				response.add(new TodaysOrderProductResponse(product.getName(), item.getPrice(), order.getOrderDate(),
-						user.getMail()));
-			}
-		}
-
-		return response;
+	    return orderRepo.findOrdersForReport(
+	            startOfWeek,
+	            endOfWeek
+	    );
 	}
 
 	// =========================================================

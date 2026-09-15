@@ -16,14 +16,17 @@ public class CategoryService {
 	private CategoryRepo repo;
 	
 	//Create Category
-		public Category createCategory(Category category) {
-			return repo.save(category);
+		public Category createCategory(String category) {
+			Category cat=new Category();
+			cat.setName(category);
+			logger.info("New categroy adding..."+category);
+			return repo.save(cat);
 		}
 		
 		//get all Category
 		public List<Category> allCategory(){
 			List<Category> categoryList=repo.findAll();
-			
+			logger.info("Listing all category....");
 			return categoryList;
 		}
 }

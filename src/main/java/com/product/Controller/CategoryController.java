@@ -1,5 +1,6 @@
 package com.product.Controller;
 
+import com.DTO.CategoryDTO;
 import com.product.CommanClasses.UserResponse;
 import com.product.Entity.Category;
 import com.product.Service.CategoryService;
@@ -29,16 +30,16 @@ public class CategoryController {
 
     @PostMapping("/create")
     @PreAuthorize("hasRole('Admin')")
-    public ResponseEntity<UserResponse> createCategory(@RequestBody Category category) {
+    public ResponseEntity<UserResponse> createCategory(@RequestBody CategoryDTO category) {
 
         if (category.getName() == null || category.getName().trim().isEmpty()) {
         	logger.info("category name is empty or null");
             throw new RuntimeException("Category name is required.");
         }
 
-        Category savedCategory = service.createCategory(category);
+        service.createCategory(category.getName());
         logger.info("New Category added successfully...");
-        UserResponse response = new UserResponse("Category added successfully...", savedCategory.getName());
+        UserResponse response = new UserResponse("Category added successfully...");
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.DTO.OrderRequest;
-import com.DTO.TodaysOrderProductResponse;
-import com.product.Entity.OrderEntity;
 import com.product.Service.OrderService;
 import com.product.response.OrderResponse;
+import com.product.response.TodaysOrderProductResponse;
 
 @RestController
 @RequestMapping("/userOrder")
@@ -51,14 +50,14 @@ public class UserOrderController {
     // GET USER ORDERS
     // =====================================================
 
-    @GetMapping("/orders")
-    public ResponseEntity<List<OrderEntity>> getMyOrders(
+    @GetMapping("/getorders")
+    public ResponseEntity<List<OrderResponse>> getMyOrders(
             Authentication authentication) {
 
         // User ID comes from JWT
         Long userId = (Long) authentication.getPrincipal();
 
-        List<OrderEntity> orders =
+        List<OrderResponse> orders =
                 userOrderService.getUserOrders(userId);
 
         return ResponseEntity.ok(orders);
@@ -66,7 +65,7 @@ public class UserOrderController {
 
 
     // =====================================================
-    // TODAY'S ORDERS - ADMIN
+    // TODAY'S ORDERS - ADMIN/USER
     // =====================================================
 
     @GetMapping("/todaysOrderList")
